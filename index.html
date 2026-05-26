@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上田篤史 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>上田篤史 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. キャディ株式会社</a>
+  <a href="#k2">2. 株式会社バリューＨＲ</a>
+  <a href="#k3">3. ハコベル株式会社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">アカウントエグゼクティブ｜Managerクラス（関東・甲信越）</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">キャディ株式会社</div>
+  <div class="co-url"><a href="https://caddi.jp" target="_blank">https://caddi.jp</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都台東区浅草橋4-2-2 D'sVARIE浅草橋ビル</td></tr><tr><th>設立</th><td>2017年11月9日</td></tr><tr><th>従業員数</th><td>596名（2025年4月1日時点、直雇用・役員のみ）</td></tr><tr><th>資本金</th><td>1億円</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>調達・製造DXの最先端企業で、AIデータプラットフォーム「CADDi」を展開</li><li>Manager年収1000万円～1600万円＋賞与（事業部業績連動）</li><li>ストックオプション付与あり、IPO期待企業</li><li>週1～3日程度のハイブリッドワーク可能</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">調達・製造のワンストップパートナー『CADDi MANUFACTURING』と図面データ活用クラウド『CADDi DRAWER』を開発運営する、製造業DXの最先端企業です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>調達・製造のワンストップパートナー『CADDi MANUFACTURING』の開発運営と図面データ活用クラウド『CADDi DRAWER』の開発運営を行っています。</p><p><strong>事業の特長：</strong></p><ul><li>メーカー/商社向けのエンタープライズ向けSaaS</li><li>製造業のDX推進を支援</li><li>海外展開も視野に入れた成長企業</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 アカウントエグゼクティブ｜Managerクラス（関東・甲信越）</div>
+          <div class="job-preview">AIデータプラットフォーム「CADDi」のフィールドセールス、顧客の変革を支援</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【職種】</strong>フィールドセールス</p><p><strong>【仕事内容】</strong></p><ul><li>インサイドセールスが獲得した新規顧客に、自社プロダクトであるAIデータプラットフォーム「CADDi」を紹介していただきます</li><li>「CADDi」を利用することで、クライアント企業で起きる「変革」を、顧客の事業特性や事例をもとに、丁寧にご説明します</li><li>クライアント企業の「設計・開発」「調達」「品質管理」「IT」「セールス」など、あらゆる部門でご活用いただくことができるので、まさに顧客の「変革」をご支援いただくことになります</li><li>「CADDi」を活用すると、クライアントが気づいていない課題を明らかにすることが可能になるので、単に、今現在感じている課題を解決するソリューション営業ではありません</li><li>ガラケー利用者に初めてスマホを紹介する場合、ガラケーの課題を聞いて紹介しないように、スマホで実現できる新たな世界を顧客とともに作っていくような営業スタイルになります</li></ul><p><strong>【応募資格】</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>法人への新規営業経験（概ね5年以上）</li><li>チームマネジメント経験</li><li>運転免許をお持ちであること</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>システム/ソフトウェアほか、提案型の無形商材の営業経験</li><li>顕在課題ではなく、潜在課題に対する営業経験</li><li>エンタープライズ領域での営業経験</li></ul><p><strong>【求める人物像】</strong></p><ul><li>ビジネスで成果を残すことに強いこだわりを持っている方</li><li>素早く行動・検証するフットワークがある方</li><li>キャディのミッション、バリューに強く共感いただける方</li><li>自身の経験を活用しながらも、積極的にun-learningできる方</li></ul><p><strong>【給与】</strong>Manager：年収1000万円～1600万円＋賞与（年2回、事業部業績連動）※グレードによって別途ストックオプション付与あり ※給与改定は原則年2回</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">💰 1000-1600万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://caddi.jp" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">営業 副部長</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社バリューＨＲ</div>
+  <div class="co-url"><a href="https://valuehr.com" target="_blank">https://valuehr.com</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都渋谷区千駄ヶ谷5-25-5</td></tr><tr><th>設立</th><td>2001年7月4日</td></tr><tr><th>従業員数</th><td>779名（2024年12月31日現在）</td></tr><tr><th>資本金</th><td>203,206万円（2024年12月31日現在）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>昨年度売上100億円突破、前年比20％成長の急成長企業</li><li>営業部長候補〜副部長レイヤーで年収800〜1200万円</li><li>ヘルスケア×DXで社会課題解決にコミット</li><li>SaaS/BPaaS/HRテック・ヘルステック経験者歓迎</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">健康情報のデジタル化サービスや健康管理サービス、健康経営・データヘルス支援サービスを提供するヘルスケア企業です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p><strong>事業内容：</strong></p><ul><li>健康情報のデジタル化サービス、各種健康管理サービス（健診予約、健診結果管理、特定保健指導、カフェテリアプランなど）</li><li>健康経営・データヘルス支援サービス</li><li>健康保険組合の新規設立支援、事務運営にかかわるBPOサービスの提供</li></ul><p>昨年度売上100億円を突破し、前年比20％成長を遂げている急成長企業です。ヘルスケア領域でのDX推進により、社会課題の解決に取り組んでいます。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 営業 副部長</div>
+          <div class="job-preview">プレイングマネージャーとして大型案件推進と組織強化を担う営業副部長候補</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>昨年度売上100億円を突破し、前年比20％成長を遂げています。一方で、大型のエンタープライズ案件が現場を牽引する部長に集中していることが、現在の組織課題です。さらなる事業拡大に向け、彼らに並ぶ牽引力を持つ副部長（部長候補）の採用を急いでいます。</p><p>現在、営業本部長のもと、5つの営業部（うち1つは営業企画部）が稼働しています。本ポジションのミッションは、プレイングマネージャーとして自ら大型案件を推進しながら、若手育成と組織強化を担うこと。</p><p>同社のサービスは、カスタマイズ開発とBPOを組み合わせた伴走型支援のため、顧客課題を特定するコンサルティング力と、開発・オペレーション部門を巻き込むPM力も求められます。加えて、KPIマネジメントや科学的な営業戦略の構築を通じ、属人的営業からの脱却と仕組み化を推進していただきます。</p><p><strong>【業務内容】</strong></p><ul><li>リード獲得戦略の立案・実行（ゼロイチ）、ウェビナー企画、ホワイトペーパー作成等、顧客向けPR/マーケティング機能の統括</li><li>営業組織の課題解決、育成体系の構築</li></ul><p><strong>■ミッション</strong></p><ul><li>エンタープライズ企業を中心とする案件獲得、売上拡大の推進</li><li>営業体制の再構築（案件増加に応じた体制づくり）</li><li>業務標準化</li></ul><p>※入社当初は業界理解のためプレイングマネージャーとして動いていただきますが、半年後を目途にチーム管理をお任せする想定です。</p><p><strong>【応募資格】</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>エンタープライズ企業向けの営業経験</li><li>コンサル型営業での成果（課題特定→解決策設計→意思決定者合意の一連を主導できる）</li><li>単価/利益を意識した提案設計ができる（値引きに頼らず通す条件の組み立て）</li><li>営業マネジメント（見込み顧客と商談状況を常に把握し、次のアクションを計画/実行して受注できる）</li><li>売上予測（着地見込み）を正確に把握し、計画達成を支える</li><li>メンバー育成/管理の経験</li><li>カスタマイズ前提の「社内発注者」としての作法</li><li>プロジェクト推進力（PM素養）</li></ul><p><strong>【求める人物像】</strong>顧客向けPR/マーケティング機能を統括でき、営業組織の課題解決に向き合える即戦力。</p><p><strong>【給与】</strong>想定年収：800万〜1200万円 ※経験、年齢、能力などを考慮の上、決定します</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 基本出社</span><span class="pill">💰 800-1200万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://valuehr.com" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://morich-inc.github.io/job-baryu-19929/" target="_blank">📋 求人票URL</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">営業マネージャー（マッチングサービス（軽貨物））</span><span class="badge badge-blue">N-1</span></div>
+  <div class="co-name">ハコベル株式会社</div>
+  <div class="co-url"><a href="https://hacobell.com" target="_blank">https://hacobell.com</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都中央区八丁堀2-14-1　住友不動産八重洲通ビル1・3F</td></tr><tr><th>設立</th><td>2022年8月1日</td></tr><tr><th>従業員数</th><td>100名</td></tr><tr><th>資本金</th><td>100,000,000円</td></tr><tr><th>IPOフェーズ</th><td>N-1</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>物流DX領域のIPO直前企業（N-1フェーズ）</li><li>物流という巨大な社会基盤を変革する使命感</li><li>実績次第で早期に部長・事業責任者へのキャリアアップ</li><li>20代〜30代が活躍、入社半年で昇進・昇格実績あり</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">物流のシェアリングプラットフォーム「ハコベル」を運営し、荷主企業様と運送会社様/ドライバー様を結ぶマッチングサービスを提供しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>物流のシェアリングプラットフォーム「ハコベル」の運営を行っています。物流DXを推進し、荷主企業と運送会社・ドライバーを効率的にマッチングするプラットフォームを提供することで、物流業界の課題解決に取り組んでいます。</p><p>IPO直前のN-1フェーズにある成長企業で、物流という巨大な社会基盤の変革を目指しています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 営業マネージャー（マッチングサービス（軽貨物））</div>
+          <div class="job-preview">大手クライアントの物流課題解決に向けたソリューション営業とマネジメント</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■募集ポジションについて</strong></p><p>今回の募集ポジションは、大手クライアントの物流課題を深く理解し、どんな価値提供をすべきかを考え抜き、最適な物流ソリューションを提案していただく、事業成長を最前線で牽引する重要なポジションです。対峙しているクライアントの課題を考え抜き、「本質的な価値」に直結するソリューションを自ら提供できることは、本ポジションならではの醍醐味です。加えて、既存のソリューションを提案するだけでなく、クライアントにとって必要なニーズを吸い上げ、プロダクト側とも連携しながら必要なソリューション/機能を作り上げるような、プロジェクト型の業務遂行も求められます。</p><p><strong>■業務内容</strong></p><p>当社は、荷主企業様と運送会社様/ドライバー様を結ぶ「物流マッチングプラットフォーム」において、荷物を配送したい法人顧客の獲得、また顧客のニーズに応じてカスタマイズ提案を行うソリューション営業のポジションです。自身が設計したオペレーション通りに品物が運ばれて様々な人の手元に届く達成感は、本ポジションならではの醍醐味です。</p><p>具体的には下記のような業務をお任せします。</p><ol><li>顧客の課題を理解し、ソリューションを提案</li><li>ソリューションを開発し、新しい市場の開拓</li><li>自ら組織を率い、売上・成長を最大化</li></ol><p><strong>【組織体制】</strong>20代〜30代の社員が活躍中です。入社半年ほどで昇進・昇格したメンバーもいます。</p><p><strong>■ポジションの魅力</strong></p><ul><li>「物流」という巨大な社会基盤を支え、変えていく、その社会的意義や使命感を肌で味わえる環境です。</li><li>自ら現場に飛び込んで、ソリューションから検討・提案することができる環境です。</li><li>事業フェーズの変化に伴い、マーケティング、プロダクト、組織作りに関わることができるダイナミックな環境です。</li><li>実績次第で早期に部長・事業責任者を担っていただくことを期待します。</li></ul><p><strong>【応募資格】</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>提案営業のご経験</li><li>マネジメントのご経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>ソリューション提案型の営業経験</li><li>ITなど、無形商材の営業経験</li><li>物流、配送での経験</li></ul><p><strong>【求める人物像】</strong></p><ul><li>社会課題の解決や事業を大きくしていくために頑張れる方</li><li>自分の顧客と向き合い、その課題を一緒に解決するために、泥臭いことも含めてやりきれる方</li><li>顧客の課題からソリューション自体を考えられる方</li><li>何よりも成果に貪欲な方</li><li>チームワークを大切にする方</li><li>変化が多いスタートアップ企業でチャレンジしたい方</li></ul><p><strong>【給与】</strong>想定年収：800万円〜1200万円 ※年収は前職考慮の上、経験・スキルに応じて決定します。</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">💰 800-1200万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://hacobell.com" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://speakerdeck.com/hacobellrecruiting/hakoberuzhu-shi-hui-she-recruit-book" target="_blank">📖 RECRUIT BOOK</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが上田篤史 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
